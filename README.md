@@ -1,2 +1,2 @@
-Зайдите в католог frontend и запустите ```npm install```
+В терминале запустите ```npm install```
 Дальше ```npm start```
