@@ -1,6 +1,4 @@
 /* Контейнер для карточек товаров */
-
-/* ProductCard.css*/
 .shop-container {
   display: flex;
   flex-wrap: wrap;
@@ -8,6 +6,8 @@
   justify-content: flex-start; /* Равномерное распределение карточек */
   padding: 20px;
   box-sizing: border-box;
+  overflow-y: auto; /* Добавляем вертикальную прокрутку */
+  max-height: 80vh; /* Ограничение высоты контейнера для прокрутки */
 }
 
 /* Карточка товара */
@@ -15,7 +15,7 @@
   flex: 1 1 calc(25% - 20px); /* Адаптивная ширина карточки */
   max-width: 250px; /* Максимальная ширина карточки */
   border-radius: 24px; /* Закругленные углы */
-  border: 1px solid rgba(0, 0, 0, 0.1); /* Легкая тень */
+  border: 1px solid rgba(0, 0, 0, 0.1); /* Легкая граница */
   background-color: #fff; /* Белый фон */
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Нежная тень */
   padding: 20px;
@@ -83,12 +83,15 @@
 .add-to-cart-button {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  background-color: #F2F2F2;
+  border-radius: 8px;
+  background-color: transparent; /* Прозрачный фон */
+  border: none; /* Убираем рамку */
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 20px; /* Размер шрифта для символов */
+  color: #000; /* Цвет символов */
   transition: background-color 0.3s ease;
 }
 
@@ -102,13 +105,6 @@
 }
 
 /* Выравнивание кнопок в нижней части карточки */
-.product-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between; /* Выравнивание элементов карточки */
-  height: 100%;
-}
-
 .add-to-cart-button-container {
   display: flex;
   justify-content: center;

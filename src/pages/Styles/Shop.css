@@ -1,11 +1,24 @@
 /* Shop.css */
 
+/* Контейнер для товаров */
 .shop-container {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+/* Контейнер для заголовка и поиска */
+.h1-search-container {
+  display: flex;
+  justify-content: space-between; /* Разместить элементы слева и справа */
+  align-items: center;
+  margin-left: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Шапка магазина */
 .shop-header {
   display: flex;
   justify-content: space-between;
@@ -13,20 +26,32 @@
   margin-bottom: 20px;
 }
 
+/* Поле для поиска */
 .search-input {
   width: 300px;
   padding: 10px;
   font-size: 16px;
-  border: 1px solid #ccc;
+  border: 1px solid #ffffff; /* Начальная белая граница */
   border-radius: 5px;
+  outline: none; /* Убираем выделение */
+  transition: box-shadow 0.2s ease-in-out;
 }
 
+/* Убираем рамку при фокусе */
+.search-input:focus {
+  border: 1px solid #ffffff; /* Белый бордер, чтобы убрать черную рамку */
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Легкая тень для фокуса */
+  outline: none;
+}
+
+/* Сетка товаров */
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 
+/* Карточка товара */
 .product-card {
   background-color: #fff;
   border-radius: 10px;
@@ -35,15 +60,18 @@
   text-align: center;
 }
 
+/* Изображение товара */
 .product-image {
   max-width: 100%;
   border-radius: 10px;
 }
 
+/* Информация о товаре */
 .product-info {
   margin-top: 10px;
 }
 
+/* Кнопка покупки */
 .buy-button {
   margin-top: 10px;
   padding: 10px;
@@ -56,4 +84,25 @@
 
 .buy-button:hover {
   background-color: #45a049;
+}
+
+/* Адаптивность для меньших экранов */
+@media (max-width: 768px) {
+  .search-input {
+    width: 200px; /* Уменьшаем ширину поля для поиска на маленьких экранах */
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Корректируем сетку для меньших экранов */
+  }
+}
+
+@media (max-width: 480px) {
+  .search-input {
+    width: 100%; /* Делаем поле для поиска на всю ширину на очень маленьких экранах */
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr; /* Одна колонка на самых маленьких экранах */
+  }
 }

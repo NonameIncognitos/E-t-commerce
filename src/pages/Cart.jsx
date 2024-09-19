@@ -1,11 +1,14 @@
-import React, { useContext } from 'react';
-import { CartContext } from '../contexts/CartContext';
+// pages/Cart.jsx
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeFromCart } from '../redux/cartSlice';
 import './Styles/Cart.css';
-import deleteIcon from '../components/assets/delete.svg'; // Иконка удаления товара
-import box_image from '../components/assets/basket_image.svg'; // Иконка пустой корзины
+import deleteIcon from '../components/assets/delete.svg';
+import box_image from '../components/assets/basket_image.svg';
 
 const Cart = ({ isOpen, onClose }) => {
-  const { cartItems, removeFromCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.cart.cartItems);
 
   // Рассчитываем итоговую сумму товаров
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -39,7 +42,7 @@ const Cart = ({ isOpen, onClose }) => {
                     <h5>{item.name}</h5>
                     <p>{item.price} руб.</p>
                   </div>
-                  <button className="remove-btn" onClick={() => removeFromCart(item.id)}>
+                  <button className="remove-btn" onClick={() => dispatch(removeFromCart(item.id))}>
                     <img src={deleteIcon} alt="Remove" />
                   </button>
                 </li>

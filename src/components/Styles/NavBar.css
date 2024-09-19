@@ -18,10 +18,10 @@ body {
   display: flex;
   justify-content: space-between; /* Элементы на противоположных краях */
   align-items: center;
-  padding: 20px 0; /* Отступы сверху и снизу */
+  padding: 20px 20px 20px 43px; /* Уменьшение правого отступа */
   background-color: #fff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05); /* Легкая тень для отделения от контента */
-  border-radius: 16px; /* Закругленные края */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Линия снизу */
+   /* Закругленные края */
   width: 100%; /* Полная ширина, чтобы занять всю доступную ширину */
   max-width: 1200px; /* Максимальная ширина, чтобы соответствовать контейнеру */
   margin: 0 auto; /* Центрирование шапки */

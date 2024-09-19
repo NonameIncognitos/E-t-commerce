@@ -1,28 +1,34 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { CartContext } from '../contexts/CartContext';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToCart, removeFromCart } from '../redux/cartSlice';
 import './Styles/ProductCard.css';
 
 const ProductCard = ({ product }) => {
-  const { cartItems, addToCart, removeFromCart, productAddState } = useContext(CartContext);
-  const [isAdded, setIsAdded] = useState(productAddState[product.id] || false);
+  const dispatch = useDispatch();
+  
+  const isProductInCart = useSelector((state) =>
+    state.cart.cartItems.some((item) => item.id === product.id)
+  );
+  const [isAdded, setIsAdded] = useState(isProductInCart);
 
-  // Следим за состоянием корзины и обновляем isAdded при изменении cartItems
   useEffect(() => {
-    const productInCart = cartItems.some(item => item.id === product.id);
-    setIsAdded(productInCart);
-  }, [cartItems, product.id]); // Обновляется каждый раз, когда меняются cartItems или product.id
+    setIsAdded(isProductInCart);
+  }, [isProductInCart]);
 
   const toggleAddToCart = () => {
     if (isAdded) {
-      removeFromCart(product.id);
+      dispatch(removeFromCart(product.id));
     } else {
-      addToCart(product);
+      dispatch(addToCart({ ...product, quantity: 1 }));
     }
   };
 
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.name} />
+      <img
+        src={product.image || '/path/to/default/image.jpg'}
+        alt={product.name}
+      />
       <div className="product-info">
         <h5>{product.name}</h5>
         <div className="product-details">

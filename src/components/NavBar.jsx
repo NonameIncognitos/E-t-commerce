@@ -1,14 +1,19 @@
-// NavBar.jsx
-import React, { useState } from "react";
+// components/NavBar.jsx
+import React from "react";
 import "./Styles/NavBar.css";
 import logo from "./assets/logo 4.svg";
 import basket from "./assets/basket.svg";
 import bookmarkIcon from "./assets/zmdi_favorite-outline.svg";
 import profile from "./assets/Union.svg";
+import { useSelector } from 'react-redux';
 
-const NavBar = ({ cartTotal, cartTotalWithTax, openCart }) => {
-  const [isBookmarkClicked, setBookmarkClicked] = useState(false);
-  const [isProfileClicked, setProfileClicked] = useState(false);
+const NavBar = ({ openCart }) => {
+  const cartTotal = useSelector((state) =>
+    state.cart.cartItems.reduce((total, item) => total + item.price * item.quantity, 0)
+  );
+
+  const [isBookmarkClicked, setBookmarkClicked] = React.useState(false);
+  const [isProfileClicked, setProfileClicked] = React.useState(false);
 
   const handleBookmarkClick = () => {
     setBookmarkClicked(!isBookmarkClicked);
