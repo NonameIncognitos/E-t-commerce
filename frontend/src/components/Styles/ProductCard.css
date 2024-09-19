@@ -1,0 +1,136 @@
+.shop-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.product-card {
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+  width: 100%;
+  max-width: none;
+}
+
+.product-card:hover {
+  transform: scale(1.02);
+}
+
+.product-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-bottom: auto;
+}
+
+.product-info h5 {
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+  margin: 10px 0;
+}
+
+.product-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: auto;
+}
+
+.price-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.price-info p {
+  margin: 0;
+  font-size: 12px;
+  color: #888;
+}
+
+.price-info .price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000;
+}
+
+.add-to-cart-btn {
+  background-color: #f2eded;
+  color: #000;
+  border: 0.5px solid #ffffff;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+  border-color: #b0b0b0;
+  color: #333;
+  transform: scale(1.05);
+}
+
+.add-to-cart-btn:active {
+  background-color: #9DD458;
+  border-color: #9DD458;
+  color: #fff;
+  transform: scale(0.95);
+}
+
+.add-to-cart-btn.added {
+  background-color: #9DD458;
+  border-color: #9DD458;
+  color: #fff;
+}
+
+.add-to-cart-btn.added:hover {
+  background-color: #8bc13f;
+  border-color: #8bc13f;
+}
+
+.add-to-cart-btn.added:active {
+  background-color: #7aa93f;
+  border-color: #7aa93f;
+}
+
+.add-to-cart-btn.disabled {
+  background-color: #d3d3d3;
+  color: #a0a0a0;
+  border-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .shop-container {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card {
+    flex: 1 1 100%;
+  }
+}

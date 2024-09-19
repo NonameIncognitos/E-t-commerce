@@ -5,12 +5,13 @@ import { removeFromCart } from '../redux/cartSlice';
 import './Styles/Cart.css';
 import deleteIcon from '../components/assets/delete.svg';
 import box_image from '../components/assets/basket_image.svg';
+import arrowRightIcon from '../components/assets/arrow_right.svg'; // Добавьте иконку стрелки вправо
 
 const Cart = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
-  // Расчет итоговой суммф
+  // Расчет итоговой суммы
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   // Рассчитываем налог 5%
@@ -30,7 +31,10 @@ const Cart = ({ isOpen, onClose }) => {
           {cartItems.length === 0 ? (
             <div className="empty-cart">
               <img src={box_image} alt="Empty Cart" />
-              <p>Корзина пуста</p>
+              <p className='basket_empty'>Корзина пуста</p>
+              <p className='des_basket'>
+                Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ
+              </p>
               <button className="go-back-btn" onClick={onClose}>Вернуться назад</button>
             </div>
           ) : (
@@ -54,11 +58,23 @@ const Cart = ({ isOpen, onClose }) => {
         {cartItems.length > 0 && (
           <div className="cart-footer">
             <div className="cart-summary">
-              <p>Итого: <span id='dot_summary'>............</span> {totalAmount.toFixed(2)} руб.</p>
-              <p>Налог (5%): {tax.toFixed(2)} руб.</p>
-              <p>Итого с налогом: {(totalAmount + tax).toFixed(2)} руб.</p>
+              <div>
+                <p>Итого</p>
+                <p className="summary-amount">{totalAmount.toFixed(2)} руб.</p>
+              </div>
+              <div>
+                <p>Налог (5%)</p>
+                <p className="summary-amount">{tax.toFixed(2)} руб.</p>
+              </div>
+              <div>
+                <p>Итого с налогом</p>
+                <p className="summary-amount">{(totalAmount + tax).toFixed(2)} руб.</p>
+              </div>
             </div>
-            <button className="checkout-btn">Оформить заказ</button>
+            <button className="checkout-btn">
+              Оформить заказ
+              <img src={arrowRightIcon} alt="Arrow Right" className="arrow-right" /> {/* Добавляем иконку стрелки */}
+            </button>
           </div>
         )}
       </div>

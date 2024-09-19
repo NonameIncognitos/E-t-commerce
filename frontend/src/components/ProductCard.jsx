@@ -28,16 +28,17 @@ const ProductCard = ({ product }) => {
       <img
         src={product.image || '/path/to/default/image.jpg'}
         alt={product.name}
+        className="product-image"
       />
       <div className="product-info">
-        <h5>{product.name}</h5>
+        <h5>{product.name}</h5> {/* Заголовок товара */}
         <div className="product-details">
           <div className="price-info">
             <p>Цена:</p>
             <p className="price">{product.price} руб.</p>
           </div>
           <button
-            className={`add-to-cart-button ${isAdded ? 'added' : ''}`}
+            className={`add-to-cart-btn ${isAdded ? 'added' : ''}`}
             onClick={toggleAddToCart}
           >
             {isAdded ? '✔' : '+'}

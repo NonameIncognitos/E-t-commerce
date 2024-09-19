@@ -1,9 +1,8 @@
-/* Cart.css */
 .cart {
   position: fixed;
   top: 0;
   right: 0;
-  width: 400px;
+  width: 385px;
   height: 100vh;
   background-color: #f8f8f8;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -46,7 +45,7 @@
 .cart-items {
   flex-grow: 1;
   margin-top: 20px;
-  overflow-y: auto; /* Для прокрутки содержимого корзины */
+  overflow-y: auto;
 }
 
 .cart-item {
@@ -60,6 +59,13 @@
   margin-bottom: 10px;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-left: -30px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cart-item:hover {
+  background-color: #f0f0f0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .cart-item-image {
@@ -74,10 +80,34 @@
   flex-grow: 1;
 }
 
+.cart-item-info p {
+  color: #000;
+  font-weight: bold;
+}
+
+.cart-item-info p.item-name {
+  font-weight: normal;
+}
+
+.cart-item-info p.item-price {
+  font-weight: bold;
+}
+
 .remove-btn {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.des_cart {
+  text-align: center;
+}
+
+.basket_empty {
+  color: #000;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .remove-btn img {
@@ -91,6 +121,7 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 20px;
 }
 
 .empty-cart img {
@@ -101,6 +132,7 @@
 .empty-cart p {
   font-size: 18px;
   color: #888;
+  text-align: center;
 }
 
 .go-back-btn {
@@ -114,23 +146,34 @@
 }
 
 .cart-footer {
-  margin-top: auto; /* Чтобы футер всегда был внизу корзины */
-  padding: 20px 0; /* Отступы для футера */
+  margin-top: auto;
+  padding: 20px 0 40px;
   text-align: center;
 }
 
 .cart-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-.checkout-btn {
-  width: 325px; /* Ширина кнопки по данным из Figma */
-  height: 55px; /* Высота кнопки по данным из Figma */
-  border-radius: 18px; /* Закругленные углы */
-  background: #9DD458;
-  color: #fff;
-  border: none;
-  cursor: pointer;
+.cart-summary div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.cart-summary p {
+  font-size: 16px;
+  font-weight: normal;
+  color: #000;
+}
+
+.cart-summary .summary-amount {
+  font-weight: bold;
+  color: #000;
 }
 
 .close-btn {
@@ -140,41 +183,45 @@
   cursor: pointer;
 }
 
-/* Адаптивность */
+.checkout-btn {
+  width: 385px;
+  height: 55px;
+  border-radius: 24px;
+  background: #9DD458;
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: bold;
+  position: relative;
+  margin-top: -10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.checkout-btn:hover {
+  background-color: #8bc13f;
+  transform: scale(1.05);
+}
+
+.arrow-right {
+  margin-left: 15px;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 20px;
+}
+
 @media (max-width: 768px) {
-  .cart {
+  .checkout-btn {
     width: 300px;
-  }
-
-  .cart-item {
-    height: auto;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .cart-item-image {
-    width: 60px;
-    height: 60px;
   }
 }
 
 @media (max-width: 480px) {
-  .cart {
+  .checkout-btn {
     width: 100%;
-  }
-
-  .cart-item {
-    height: auto;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cart-item-image {
-    width: 50px;
-    height: 50px;
-  }
-
-  .empty-cart img {
-    max-width: 120px;
   }
 }
