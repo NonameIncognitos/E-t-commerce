@@ -10,7 +10,7 @@ const Cart = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.cartItems);
 
-  // Рассчитываем итоговую сумму товаров
+  // Расчет итоговой суммф
   const totalAmount = cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
   // Рассчитываем налог 5%
